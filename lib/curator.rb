@@ -13,4 +13,16 @@ class Curator
   def add_artist(artist)
     @artists << artist
   end
+
+  def find_photograph_by_id(photograph_id)
+    @photographs.find do |photograph|
+      photograph.id == photograph_id
+    end
+  end
+
+  def find_artist_by_id(artist_id)
+    @artists.find do |artist|
+      artist.id == artist_id
+    end
+  end
 end
