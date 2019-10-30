@@ -25,8 +25,9 @@ class CuratorTest < Minitest::Test
     assert_instance_of Curator, @curator
   end
 
-  def test_it_initializes_with_no_photos
+  def test_it_initializes_with_no_photos_or_artists
     assert_equal [], @curator.photographs
+    assert_equal [], @curator.artists
   end
 
   def test_it_can_add_photographs
@@ -34,5 +35,12 @@ class CuratorTest < Minitest::Test
     assert_equal [@photo_1], @curator.photographs
     @curator.add_photograph(@photo_2)
     assert_equal [@photo_1, @photo_2], @curator.photographs
+  end
+
+  def test_it_can_add_artists
+    @curator.add_artist(@artist_1)
+    assert_equal [@artist_1], @curator.artists
+    @curator.add_artist(@artist_2)
+    assert_equal [@artist_1, @artist_2], @curator.artists
   end
 end
