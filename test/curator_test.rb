@@ -89,4 +89,41 @@ class CuratorTest < Minitest::Test
     @curator.add_photograph(@photo_2)
     assert_equal @photo_2, @curator.find_photograph_by_id("2")
   end
+
+  def test_it_can_find_photographs_by_artist
+    skip
+    @curator.add_artist(@artist_1)
+    @curator.add_artist(@artist_2)
+    @curator.add_artist(@artist_3)
+    @curator.add_photograph(@photo_1)
+    @curator.add_photograph(@photo_2)
+    @curator.add_photograph(@photo_3)
+    @curator.add_photograph(@photo_4)
+    assert_equal [@photo_2, @photo_3], @curator.find_photographs_by_artist(@artist_3)
+  end
+
+  def test_it_can_find_artists_with_multiple_photographs
+    skip
+    @curator.add_artist(@artist_1)
+    @curator.add_artist(@artist_2)
+    @curator.add_artist(@artist_3)
+    @curator.add_photograph(@photo_1)
+    @curator.add_photograph(@photo_2)
+    @curator.add_photograph(@photo_3)
+    @curator.add_photograph(@photo_4)
+    assert_equal [@artist_1], @curator.artists_with_multiple_photographs
+  end
+
+  def test_it_can_find_photographs_by_artists_from_a_certain_country
+    skip
+    @curator.add_artist(@artist_1)
+    @curator.add_artist(@artist_2)
+    @curator.add_artist(@artist_3)
+    @curator.add_photograph(@photo_1)
+    @curator.add_photograph(@photo_2)
+    @curator.add_photograph(@photo_3)
+    @curator.add_photograph(@photo_4)
+    assert_equal [@photo_2], @curator.photographs_taken_by_artists_from("United States")
+    assert_equal [], @curator.photographs_taken_by_artists_from("Argentina")
+  end
 end
