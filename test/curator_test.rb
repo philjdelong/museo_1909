@@ -89,20 +89,4 @@ class CuratorTest < Minitest::Test
     @curator.add_photograph(@photo_2)
     assert_equal @photo_2, @curator.find_photograph_by_id("2")
   end
-
-  def test_it_can_find_photographs_by_artist
-    @curator.add_artist(@artist_1)
-    @curator.add_artist(@artist_2)
-    @curator.add_artist(@artist_3)
-    @curator.add_artist(@artist_4)
-    @curator.add_photograph(@photo_1)
-    @curator.add_photograph(@photo_2)
-    @curator.add_photograph(@photo_3)
-    @curator.add_photograph(@photo_4)
-    assert_equal [@photo_3, @photo_4], @curator.find_photographs_by_artist(@artist_3)
-    assert_equal [], @curator.artists_with_multiple_photographs
-  end
 end
-
-# assert_equal [], @curator.photographs_taken_by_artist_from("Unites States")
-# assert_equal [], @curator.photographs_taken_by_artist_from("Argentina")
